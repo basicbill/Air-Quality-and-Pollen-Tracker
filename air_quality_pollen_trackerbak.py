@@ -13,16 +13,16 @@ from pathlib import Path
 # 11 US locations to track (airport codes for consistency)
 LOCATIONS = {
     "KBIS": {"lat": 46.7727, "lon": -100.7461, "name": "Bismarck, ND"},
-    "KBOS": {"lat": 42.3656, "lon": -71.0096, "name": "Boston, MA"},
+    "KBOS": {"lat": 42.3656, "lon": -71.0096, "name": "Boston Logan, MA"},
     "KDFW": {"lat": 32.8998, "lon": -97.0403, "name": "Dallas/Fort Worth, TX"},
-    "KDEN": {"lat": 39.8561, "lon": -104.6737, "name": "Denver, CO"},
-    "KLAX": {"lat": 33.9416, "lon": -118.4085, "name": "Los Angeles, CA"},
-    "KMIA": {"lat": 25.7959, "lon": -80.2870, "name": "Miami, FL"},
-    "KOMA": {"lat": 41.3032, "lon": -95.8941, "name": "Omaha, NE"},
-    "KORD": {"lat": 41.9742, "lon": -87.9073, "name": "Chicago, IL"},
-    "KPDX": {"lat": 45.5898, "lon": -122.5951, "name": "Portland, OR"},
-    "KPHX": {"lat": 33.4352, "lon": -112.0101, "name": "Phoenix, AZ"},
-    "KTUS": {"lat": 32.1161, "lon": -110.9413, "name": "Tucson, AZ"}
+    "KDEN": {"lat": 39.8561, "lon": -104.6737, "name": "Denver Intl, CO"},
+    "KLAX": {"lat": 33.9416, "lon": -118.4085, "name": "Los Angeles Intl, CA"},
+    "KMIA": {"lat": 25.7959, "lon": -80.2870, "name": "Miami Intl, FL"},
+    "KOMA": {"lat": 41.3032, "lon": -95.8941, "name": "Omaha Eppley, NE"},
+    "KORD": {"lat": 41.9742, "lon": -87.9073, "name": "Chicago O'Hare, IL"},
+    "KPDX": {"lat": 45.5898, "lon": -122.5951, "name": "Portland Intl, OR"},
+    "KPHX": {"lat": 33.4352, "lon": -112.0101, "name": "Phoenix Sky Harbor, AZ"},
+    "KTUS": {"lat": 32.1161, "lon": -110.9413, "name": "Tucson Intl, AZ"}
 }
 
 # Accuracy tolerances
@@ -399,111 +399,6 @@ def save_result(result):
         json.dump(results, f, indent=2)
 
 
-def generate_ai_summary():
-    """Generate AI-readable summary text file"""
-    print(f"\n📝 Generating AI summary...")
-    
-    # Load latest results
-    if not RESULTS_FILE.exists():
-        print("  No results file yet")
-        return
-    
-    with open(RESULTS_FILE) as f:
-        results = json.load(f)
-    
-    if not results:
-        print("  No results yet")
-        return
-    
-    # Get most recent date
-    dates = sorted(set(r['date'] for r in results))
-    latest_date = dates[-1]
-    
-    # Load latest data
-    aq_file = AQ_CURRENT_DIR / f"{latest_date}.json"
-    pollen_file = POLLEN_CURRENT_DIR / f"{latest_date}.json"
-    
-    if not (aq_file.exists() and pollen_file.exists()):
-        print("  Missing current data files")
-        return
-    
-    with open(aq_file) as f:
-        aq_data = json.load(f)
-    with open(pollen_file) as f:
-        pollen_data = json.load(f)
-    
-    # Calculate accuracy
-    aq_results = [r for r in results if r['type'] == 'air_quality']
-    pollen_results = [r for r in results if r['type'] == 'pollen']
-    
-    aq_accuracy = round(sum(1 for r in aq_results if r['accurate']) / len(aq_results) * 100) if aq_results else 0
-    pollen_accuracy = round(sum(1 for r in pollen_results if r['accurate']) / len(pollen_results) * 100) if pollen_results else 0
-    
-    # Find best/worst
-    locations_aqi = [(code, data.get('aqi', 0)) for code, data in aq_data.items()]
-    locations_aqi.sort(key=lambda x: x[1])
-    best_location = locations_aqi[0]
-    worst_location = locations_aqi[-1]
-    
-    # Helper functions
-    def get_aqi_label(aqi):
-        if aqi <= 50: return 'Good'
-        if aqi <= 100: return 'Moderate'
-        if aqi <= 150: return 'Unhealthy for Sensitive'
-        if aqi <= 200: return 'Unhealthy'
-        if aqi <= 300: return 'Very Unhealthy'
-        return 'Hazardous'
-    
-    def get_pollen_label(level):
-        if level <= 1: return 'Low'
-        if level <= 2: return 'Medium'
-        if level <= 3: return 'High'
-        return 'Very High'
-    
-    # Build summary
-    summary_lines = [
-        f"Last updated: {latest_date}",
-        f"Air Quality Accuracy: {aq_accuracy}% ({len(aq_results)} forecasts)",
-        f"Pollen Accuracy: {pollen_accuracy}% ({len(pollen_results)} forecasts)",
-        f"Best air quality: {LOCATIONS[best_location[0]]['name']} (AQI {best_location[1]})",
-        f"Worst air quality: {LOCATIONS[worst_location[0]]['name']} (AQI {worst_location[1]})",
-        ""
-    ]
-    
-    # Tucson and Phoenix details
-    for code in ['KTUS', 'KPHX']:
-        aq = aq_data.get(code, {})
-        pollen = pollen_data.get(code, {})
-        aqi = aq.get('aqi', 0)
-        summary_lines.append(
-            f"{LOCATIONS[code]['name']}: AQI {aqi} ({get_aqi_label(aqi)}), "
-            f"Overall Pollen {get_pollen_label(pollen.get('overall', 0))} - "
-            f"Tree {get_pollen_label(pollen.get('tree', 0))}, "
-            f"Grass {get_pollen_label(pollen.get('grass', 0))}, "
-            f"Weed {get_pollen_label(pollen.get('weed', 0))}"
-        )
-    
-    summary_lines.append("")
-    summary_lines.append("All locations:")
-    
-    # All locations
-    for code in sorted(LOCATIONS.keys()):
-        aq = aq_data.get(code, {})
-        pollen = pollen_data.get(code, {})
-        aqi = aq.get('aqi', 0)
-        summary_lines.append(
-            f"{LOCATIONS[code]['name']}: AQI {aqi} ({get_aqi_label(aqi)}), "
-            f"Pollen {get_pollen_label(pollen.get('overall', 0))}"
-        )
-    
-    # Write to file
-    summary_file = DATA_DIR / "ai-summary.txt"
-    with open(summary_file, 'w') as f:
-        f.write('\n'.join(summary_lines))
-    
-    print(f"✅ Generated AI summary: {summary_file}")
-
-
 def main():
     """Main execution"""
     print("🌍 Air Quality & Pollen Tracker")
@@ -519,9 +414,6 @@ def main():
     
     # Step 3: Score any ready forecasts
     score_forecasts(today)
-    
-    # Step 4: Generate AI-readable summary
-    generate_ai_summary()
     
     print("\n✨ Done!")
 
