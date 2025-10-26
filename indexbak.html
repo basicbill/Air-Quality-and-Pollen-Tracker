@@ -194,9 +194,6 @@
             <p class="subtitle">Tracking health conditions and forecast accuracy across 11 US locations</p>
         </header>
 
-        <!-- Hidden AI-readable summary -->
-        <div id="aiSummary" style="display: none;"></div>
-
         <div id="content">
             <div class="no-data">
                 <h2>📊 Loading data...</h2>
@@ -383,27 +380,6 @@
 
             document.getElementById('content').innerHTML = html;
             document.getElementById('lastUpdated').textContent = `Last updated: ${latestDate}`;
-
-            // Generate AI-readable summary
-            const tucsonData = aqData['KTUS'] || {};
-            const tucsonPollen = pollenData['KTUS'] || {};
-            const phoenixData = aqData['KPHX'] || {};
-            const phoenixPollen = pollenData['KPHX'] || {};
-            
-            const summaryParts = [
-                `Last updated: ${latestDate}.`,
-                `Air Quality Accuracy: ${aqAccuracy}% (${aqResults.length} forecasts).`,
-                `Pollen Accuracy: ${pollenAccuracy}% (${pollenResults.length} forecasts).`,
-                `Best air quality: ${LOCATION_NAMES[bestLocation.code]} (AQI ${bestLocation.aqi}).`,
-                `Worst air quality: ${LOCATION_NAMES[worstLocation.code]} (AQI ${worstLocation.aqi}).`,
-                `Tucson, AZ: AQI ${tucsonData.aqi || 'N/A'} (${getAQILabel(tucsonData.aqi || 0)}), Overall Pollen ${getPollenLabel(tucsonPollen.overall || 0)} - Tree ${getPollenLabel(tucsonPollen.tree || 0)}, Grass ${getPollenLabel(tucsonPollen.grass || 0)}, Weed ${getPollenLabel(tucsonPollen.weed || 0)}.`,
-                `Phoenix, AZ: AQI ${phoenixData.aqi || 'N/A'} (${getAQILabel(phoenixData.aqi || 0)}), Overall Pollen ${getPollenLabel(phoenixPollen.overall || 0)} - Tree ${getPollenLabel(phoenixPollen.tree || 0)}, Grass ${getPollenLabel(phoenixPollen.grass || 0)}, Weed ${getPollenLabel(phoenixPollen.weed || 0)}.`,
-                `All locations: ${Object.keys(LOCATION_NAMES).map(code => 
-                    `${LOCATION_NAMES[code]}: AQI ${aqData[code]?.aqi || 'N/A'} (${getAQILabel(aqData[code]?.aqi || 0)}), Pollen ${getPollenLabel(pollenData[code]?.overall || 0)}`
-                ).join('. ')}.`
-            ];
-
-            document.getElementById('aiSummary').textContent = summaryParts.join(' ');
 
             // Create charts
             createAccuracyChart(results);
