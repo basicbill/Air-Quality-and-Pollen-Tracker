@@ -98,5 +98,55 @@
     "actual_aqi": 44,
     "diff": 45,
     "accurate": false
+  },
+  {
+    "date": "2025-10-27",
+    "type": "air_quality",
+    "location": "KORD",
+    "lead_days": 1,
+    "forecast_aqi": -1,
+    "actual_aqi": 37,
+    "diff": 38,
+    "accurate": false
+  },
+  {
+    "date": "2025-10-27",
+    "type": "air_quality",
+    "location": "KMIA",
+    "lead_days": 1,
+    "forecast_aqi": 40,
+    "actual_aqi": 40,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-10-27",
+    "type": "air_quality",
+    "location": "KBOS",
+    "lead_days": 1,
+    "forecast_aqi": -1,
+    "actual_aqi": 18,
+    "diff": 19,
+    "accurate": true
+  },
+  {
+    "date": "2025-10-27",
+    "type": "air_quality",
+    "location": "KBOS",
+    "lead_days": 2,
+    "forecast_aqi": -1,
+    "actual_aqi": 18,
+    "diff": 19,
+    "accurate": true
+  },
+  {
+    "date": "2025-10-27",
+    "type": "air_quality",
+    "location": "KDEN",
+    "lead_days": 1,
+    "forecast_aqi": -1,
+    "actual_aqi": 55,
+    "diff": 56,
+    "accurate": false
   }
 ]
