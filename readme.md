@@ -32,12 +32,15 @@ Automatically tracks air quality and pollen levels across 11 US locations, compa
 - Go to https://docs.airnowapi.org/account/request/
 - Fill out the form (free for personal use)
 - You'll receive your API key via email
+- After email verification, log in and find your key at: https://docs.airnowapi.org/webservices (top right corner)
 
-**Tomorrow.io API (Pollen Data)**
-- Go to https://app.tomorrow.io/signup
-- Create free account
-- Navigate to Development → API Keys
-- Copy your API key
+**Google Pollen API (Pollen Data)**
+- Go to https://console.cloud.google.com/
+- Create a new project (or select existing)
+- Enable the "Pollen API" in the API Library
+- Go to "Credentials" and create an API key
+- **Free tier: 10,000 API calls/month** (you only need ~660/month)
+- Documentation: https://developers.google.com/maps/documentation/pollen
 
 ### 2. Create GitHub Repository
 
@@ -91,7 +94,7 @@ Create these empty folders in your repo (GitHub needs at least a placeholder fil
 3. Click **New repository secret**
 4. Add two secrets:
    - Name: `AIRNOW_API_KEY`, Value: [your AirNow key]
-   - Name: `TOMORROW_API_KEY`, Value: [your Tomorrow.io key]
+   - Name: `GOOGLE_MAPS_API_KEY`, Value: [your Google API key]
 
 ### 6. Enable GitHub Actions Permissions
 
@@ -135,6 +138,15 @@ Don't wait for the scheduled run - test immediately:
 - **Day 6**: First 5-day forecast scored
 - **After 30 days**: Meaningful patterns start emerging
 - **After 90 days**: Seasonal trends become clear
+
+### Pollen Seasonality
+
+**Important**: Pollen values will show `0` or "Low" during off-season months:
+- **Tree Pollen**: Spring (March-May)
+- **Grass Pollen**: Late Spring/Summer (May-July)  
+- **Weed Pollen**: Late Summer/Fall (August-October)
+
+During winter and late fall, low/zero pollen readings are expected and normal. Real data will appear when pollen season begins in spring!
 
 ### Accuracy Metrics
 
@@ -235,7 +247,7 @@ air-quality-pollen-tracker/
 
 **API rate limits**
 - AirNow: Very generous, should never hit limits
-- Tomorrow.io: 500 calls/day, 25/hour (plenty for 11 locations)
+- Google Pollen API: 10,000 calls/month (you need ~660/month = 6.6% usage)
 - Script adds delays between calls to be respectful
 
 ## 📈 What You'll Learn
@@ -258,7 +270,9 @@ After collecting data for a while:
 ## 📝 API Documentation
 
 - **AirNow API**: https://docs.airnowapi.org/
-- **Tomorrow.io API**: https://docs.tomorrow.io/
+- **Google Pollen API**: https://developers.google.com/maps/documentation/pollen
+
+**Note**: This project originally used Tomorrow.io for pollen data, but they moved pollen data behind a paid subscription. Google Pollen API provides the same functionality with a generous free tier (10,000 calls/month vs the ~660 needed for this tracker).
 
 ## 💡 Tips
 
