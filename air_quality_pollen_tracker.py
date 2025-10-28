@@ -33,7 +33,8 @@ TOLERANCES = {
 
 # API Keys from environment variables
 AIRNOW_API_KEY = os.environ.get('AIRNOW_API_KEY', '')
-TOMORROW_API_KEY = os.environ.get('TOMORROW_API_KEY', '')
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY', '')
+# Note: Pollen data uses Google Pollen API (10,000 free calls/month)
 
 # Data directories
 DATA_DIR = Path("data")
@@ -126,67 +127,82 @@ def fetch_air_quality(location_code, lat, lon):
 
 
 def fetch_pollen(location_code, lat, lon):
-    """Fetch current pollen and forecast from Tomorrow.io API"""
-    if not TOMORROW_API_KEY:
-        print(f"⚠️  No Tomorrow.io API key - skipping {location_code}")
+    """Fetch current pollen and forecast from Google Pollen API
+
+    Google Pollen API offers 10,000 free calls/month
+    Get your API key at: https://developers.google.com/maps/documentation/pollen/get-api-key
+    """
+    if not GOOGLE_MAPS_API_KEY:
+        print(f"⚠️  No Google Maps API key - skipping {location_code}")
         return None
-    
-    url = "https://api.tomorrow.io/v4/timelines"
-    
-    # Request both current and forecast data
+
+    url = "https://pollen.googleapis.com/v1/forecast:lookup"
+
     params = {
-        "location": f"{lat},{lon}",
-        "fields": "treeIndex,grassIndex,weedIndex",
-        "timesteps": "1d",
-        "startTime": "now",
-        "endTime": (datetime.now() + timedelta(days=5)).isoformat(),
-        "apikey": TOMORROW_API_KEY
+        "key": GOOGLE_MAPS_API_KEY,
+        "location.latitude": lat,
+        "location.longitude": lon,
+        "days": 5  # Get 5-day forecast
     }
-    
+
     try:
         response = requests.get(url, params=params, timeout=10)
         response.raise_for_status()
         data = response.json()
-        
-        # Parse the timeline
-        timeline = data.get('data', {}).get('timelines', [])
-        if not timeline:
+
+        daily_info = data.get('dailyInfo', [])
+        if not daily_info:
             return None
-        
-        intervals = timeline[0].get('intervals', [])
-        if not intervals:
-            return None
-        
-        # First interval is current/today
-        current = intervals[0]['values']
-        current_pollen = {
-            'tree': current.get('treeIndex', 0),
-            'grass': current.get('grassIndex', 0),
-            'weed': current.get('weedIndex', 0),
-            'overall': max(current.get('treeIndex', 0), 
-                          current.get('grassIndex', 0), 
-                          current.get('weedIndex', 0))
-        }
-        
-        # Remaining intervals are forecasts
+
+        # Helper to extract pollen index for a plant type
+        def get_pollen_index(day_data, plant_type):
+            """Extract Universal Pollen Index (UPI) for a plant type"""
+            plant_info = day_data.get('plantInfo', [])
+            for plant in plant_info:
+                if plant.get('code') == plant_type:
+                    index_info = plant.get('indexInfo', {})
+                    return index_info.get('value', 0)
+            return 0
+
+        # Get current day (first day in forecast)
+        if daily_info:
+            today = daily_info[0]
+            current_pollen = {
+                'tree': get_pollen_index(today, 'TREE'),
+                'grass': get_pollen_index(today, 'GRASS'),
+                'weed': get_pollen_index(today, 'WEED'),
+                'overall': max(
+                    get_pollen_index(today, 'TREE'),
+                    get_pollen_index(today, 'GRASS'),
+                    get_pollen_index(today, 'WEED')
+                )
+            }
+        else:
+            current_pollen = {'tree': 0, 'grass': 0, 'weed': 0, 'overall': 0}
+
+        # Get forecast for remaining days
         forecast_pollen = []
-        for interval in intervals[1:6]:  # Next 5 days
-            values = interval['values']
+        for i, day_data in enumerate(daily_info[1:5]):  # Skip first (current), take next 4
+            date_str = day_data.get('date', {})
+            forecast_date = f"{date_str.get('year')}-{date_str.get('month'):02d}-{date_str.get('day'):02d}"
+
             forecast_pollen.append({
-                'date': interval['startTime'][:10],  # YYYY-MM-DD
-                'tree': values.get('treeIndex', 0),
-                'grass': values.get('grassIndex', 0),
-                'weed': values.get('weedIndex', 0),
-                'overall': max(values.get('treeIndex', 0),
-                             values.get('grassIndex', 0),
-                             values.get('weedIndex', 0))
+                'date': forecast_date,
+                'tree': get_pollen_index(day_data, 'TREE'),
+                'grass': get_pollen_index(day_data, 'GRASS'),
+                'weed': get_pollen_index(day_data, 'WEED'),
+                'overall': max(
+                    get_pollen_index(day_data, 'TREE'),
+                    get_pollen_index(day_data, 'GRASS'),
+                    get_pollen_index(day_data, 'WEED')
+                )
             })
-        
+
         return {
             'current': current_pollen,
             'forecast': forecast_pollen
         }
-        
+
     except Exception as e:
         print(f"❌ Error fetching pollen for {location_code}: {e}")
         return None

@@ -26,7 +26,7 @@ jobs:
       - name: Run tracker
         env:
           AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
-          TOMORROW_API_KEY: ${{ secrets.TOMORROW_API_KEY }}
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: |
           python air_quality_pollen_tracker.py
       
