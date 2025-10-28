@@ -1,7 +1,7 @@
 Last updated: 2025-10-28
 Air Quality Accuracy: 44% (18 forecasts)
 Pollen Accuracy: 0% (0 forecasts)
-Best air quality: Portland, OR (AQI 16)
+Best air quality: Portland, OR (AQI 5)
 Worst air quality: Los Angeles, CA (AQI 64)
 
 Tucson, AZ: AQI 44 (Good), Overall Pollen Low - Tree Low, Grass Low, Weed Low
@@ -16,6 +16,6 @@ Los Angeles, CA: AQI 64 (Moderate), Pollen Low
 Miami, FL: AQI 52 (Moderate), Pollen Low
 Omaha, NE: AQI 22 (Good), Pollen Low
 Chicago, IL: AQI 46 (Good), Pollen Low
-Portland, OR: AQI 16 (Good), Pollen Low
+Portland, OR: AQI 5 (Good), Pollen Low
 Phoenix, AZ: AQI 63 (Moderate), Pollen Low
 Tucson, AZ: AQI 44 (Good), Pollen Low
