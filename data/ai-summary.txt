@@ -1,21 +1,21 @@
-Last updated: 2025-11-25
-Air Quality Accuracy: 33% (109 forecasts)
-Pollen Accuracy: 100% (1166 forecasts)
-Best air quality: Omaha, NE (AQI 22)
-Worst air quality: Phoenix, AZ (AQI 78)
+Last updated: 2025-11-26
+Air Quality Accuracy: 32% (111 forecasts)
+Pollen Accuracy: 100% (1210 forecasts)
+Best air quality: Chicago, IL (AQI 21)
+Worst air quality: Phoenix, AZ (AQI 98)
 
-Tucson, AZ: AQI 61 (Moderate), Overall Pollen Low - Tree Low, Grass Low, Weed Low
-Phoenix, AZ: AQI 78 (Moderate), Overall Pollen Low - Tree Low, Grass Low, Weed Low
+Tucson, AZ: AQI 58 (Moderate), Overall Pollen Low - Tree Low, Grass Low, Weed Low
+Phoenix, AZ: AQI 98 (Moderate), Overall Pollen Low - Tree Low, Grass Low, Weed Low
 
 All locations:
-Bismarck, ND: AQI 36 (Good), Pollen Low
-Boston, MA: AQI 36 (Good), Pollen Low
-Denver, CO: AQI 44 (Good), Pollen Low
-Dallas/Fort Worth, TX: AQI 51 (Moderate), Pollen Low
-Los Angeles, CA: AQI 72 (Moderate), Pollen Low
-Miami, FL: AQI 35 (Good), Pollen Low
-Omaha, NE: AQI 22 (Good), Pollen Low
-Chicago, IL: AQI 69 (Moderate), Pollen Low
-Portland, OR: AQI 58 (Moderate), Pollen Low
-Phoenix, AZ: AQI 78 (Moderate), Pollen Low
-Tucson, AZ: AQI 61 (Moderate), Pollen Low
+Bismarck, ND: AQI 52 (Moderate), Pollen Low
+Boston, MA: AQI 31 (Good), Pollen Low
+Denver, CO: AQI 52 (Moderate), Pollen Low
+Dallas/Fort Worth, TX: AQI 28 (Good), Pollen Low
+Los Angeles, CA: AQI 74 (Moderate), Pollen Low
+Miami, FL: AQI 33 (Good), Pollen Low
+Omaha, NE: AQI 29 (Good), Pollen Low
+Chicago, IL: AQI 21 (Good), Pollen Low
+Portland, OR: AQI 34 (Good), Pollen Low
+Phoenix, AZ: AQI 98 (Moderate), Pollen Low
+Tucson, AZ: AQI 58 (Moderate), Pollen Low
