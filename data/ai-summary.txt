@@ -1,21 +1,21 @@
-Last updated: 2025-11-28
-Air Quality Accuracy: 33% (117 forecasts)
-Pollen Accuracy: 100% (1298 forecasts)
-Best air quality: Portland, OR (AQI 11)
-Worst air quality: Phoenix, AZ (AQI 216)
+Last updated: 2025-11-29
+Air Quality Accuracy: 33% (121 forecasts)
+Pollen Accuracy: 100% (1342 forecasts)
+Best air quality: Omaha, NE (AQI 20)
+Worst air quality: Phoenix, AZ (AQI 121)
 
-Tucson, AZ: AQI 76 (Moderate), Overall Pollen Low - Tree Low, Grass Low, Weed Low
-Phoenix, AZ: AQI 216 (Very Unhealthy), Overall Pollen Low - Tree Low, Grass Low, Weed Low
+Tucson, AZ: AQI 61 (Moderate), Overall Pollen Low - Tree Low, Grass Low, Weed Low
+Phoenix, AZ: AQI 121 (Unhealthy for Sensitive), Overall Pollen Low - Tree Low, Grass Low, Weed Low
 
 All locations:
-Bismarck, ND: AQI 115 (Unhealthy for Sensitive), Pollen Low
-Boston, MA: AQI 18 (Good), Pollen Low
-Denver, CO: AQI 69 (Moderate), Pollen Low
-Dallas/Fort Worth, TX: AQI 28 (Good), Pollen Low
-Los Angeles, CA: AQI 53 (Moderate), Pollen Low
+Bismarck, ND: AQI 26 (Good), Pollen Low
+Boston, MA: AQI 28 (Good), Pollen Low
+Denver, CO: AQI 39 (Good), Pollen Low
+Dallas/Fort Worth, TX: AQI 34 (Good), Pollen Low
+Los Angeles, CA: AQI 66 (Moderate), Pollen Low
 Miami, FL: AQI 34 (Good), Pollen Low
-Omaha, NE: AQI 52 (Moderate), Pollen Low
-Chicago, IL: AQI 28 (Good), Pollen Low
-Portland, OR: AQI 11 (Good), Pollen Low
-Phoenix, AZ: AQI 216 (Very Unhealthy), Pollen Low
-Tucson, AZ: AQI 76 (Moderate), Pollen Low
+Omaha, NE: AQI 20 (Good), Pollen Low
+Chicago, IL: AQI 64 (Moderate), Pollen Low
+Portland, OR: AQI 28 (Good), Pollen Low
+Phoenix, AZ: AQI 121 (Unhealthy for Sensitive), Pollen Low
+Tucson, AZ: AQI 61 (Moderate), Pollen Low
