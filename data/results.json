@@ -14628,5 +14628,485 @@
     "actual_level": 0,
     "diff": 0,
     "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "air_quality",
+    "location": "KBOS",
+    "lead_days": 2,
+    "forecast_aqi": -1,
+    "actual_aqi": 38,
+    "diff": 39,
+    "accurate": false
+  },
+  {
+    "date": "2025-11-30",
+    "type": "air_quality",
+    "location": "KBOS",
+    "lead_days": 1,
+    "forecast_aqi": -1,
+    "actual_aqi": 38,
+    "diff": 39,
+    "accurate": false
+  },
+  {
+    "date": "2025-11-30",
+    "type": "air_quality",
+    "location": "KMIA",
+    "lead_days": 1,
+    "forecast_aqi": 40,
+    "actual_aqi": 35,
+    "diff": 5,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "air_quality",
+    "location": "KORD",
+    "lead_days": 1,
+    "forecast_aqi": -1,
+    "actual_aqi": 37,
+    "diff": 38,
+    "accurate": false
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KOMA",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KLAX",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KDFW",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KDEN",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KDEN",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KDFW",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KTUS",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KBOS",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KLAX",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KPDX",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KBOS",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KTUS",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KORD",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KOMA",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KTUS",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KLAX",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KBOS",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KOMA",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KMIA",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KMIA",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KPHX",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KPHX",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KDEN",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KDEN",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KPHX",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KMIA",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KDFW",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KBOS",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KPDX",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KBIS",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KORD",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KMIA",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KTUS",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KPDX",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KBIS",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KPDX",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KBIS",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KOMA",
+    "lead_days": 4,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KORD",
+    "lead_days": 2,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KORD",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KBIS",
+    "lead_days": 3,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KPHX",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KLAX",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
+  },
+  {
+    "date": "2025-11-30",
+    "type": "pollen",
+    "location": "KDFW",
+    "lead_days": 1,
+    "forecast_level": 0,
+    "actual_level": 0,
+    "diff": 0,
+    "accurate": true
   }
 ]
