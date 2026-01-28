@@ -42598,5 +42598,15 @@
     "actual_level": 0,
     "diff": 0,
     "accurate": true
+  },
+  {
+    "date": "2026-01-28",
+    "type": "air_quality",
+    "location": "KMIA",
+    "lead_days": 1,
+    "forecast_aqi": 25,
+    "actual_aqi": 34,
+    "diff": 9,
+    "accurate": true
   }
 ]
