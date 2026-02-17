@@ -43248,5 +43248,35 @@
     "actual_aqi": 109,
     "diff": 110,
     "accurate": false
+  },
+  {
+    "date": "2026-02-17",
+    "type": "air_quality",
+    "location": "KBOS",
+    "lead_days": 1,
+    "forecast_aqi": 60,
+    "actual_aqi": 51,
+    "diff": 9,
+    "accurate": true
+  },
+  {
+    "date": "2026-02-17",
+    "type": "air_quality",
+    "location": "KBOS",
+    "lead_days": 2,
+    "forecast_aqi": 60,
+    "actual_aqi": 51,
+    "diff": 9,
+    "accurate": true
+  },
+  {
+    "date": "2026-02-17",
+    "type": "air_quality",
+    "location": "KORD",
+    "lead_days": 1,
+    "forecast_aqi": -1,
+    "actual_aqi": 53,
+    "diff": 54,
+    "accurate": false
   }
 ]
