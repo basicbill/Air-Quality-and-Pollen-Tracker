@@ -43348,5 +43348,15 @@
     "actual_aqi": 57,
     "diff": 58,
     "accurate": false
+  },
+  {
+    "date": "2026-02-21",
+    "type": "air_quality",
+    "location": "KORD",
+    "lead_days": 1,
+    "forecast_aqi": -1,
+    "actual_aqi": 39,
+    "diff": 40,
+    "accurate": false
   }
 ]
