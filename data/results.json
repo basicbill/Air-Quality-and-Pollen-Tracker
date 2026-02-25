@@ -43448,5 +43448,15 @@
     "actual_aqi": 27,
     "diff": 28,
     "accurate": false
+  },
+  {
+    "date": "2026-02-25",
+    "type": "air_quality",
+    "location": "KBOS",
+    "lead_days": 2,
+    "forecast_aqi": -1,
+    "actual_aqi": 44,
+    "diff": 45,
+    "accurate": false
   }
 ]
