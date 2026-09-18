@@ -56,7 +56,9 @@ def fetch_air_quality(location_code, lat, lon):
         return None
     
     # Current observations
-    current_url = "http://www.airnowapi.org/aq/observation/latLong/current/"
+    # Using the new /aq/observation/current/ziplatlong/ endpoint - the old
+    # /aq/observation/latLong/current/ endpoint retires September 30, 2026.
+    current_url = "http://www.airnowapi.org/aq/observation/current/ziplatlong/"
     current_params = {
         "format": "application/json",
         "latitude": lat,
@@ -64,9 +66,11 @@ def fetch_air_quality(location_code, lat, lon):
         "distance": 25,
         "API_KEY": AIRNOW_API_KEY
     }
-    
+
     # Forecast
-    forecast_url = "http://www.airnowapi.org/aq/forecast/latLong/"
+    # Using the new /aq/forecast/current/ endpoint - the old
+    # /aq/forecast/latLong/ endpoint retires September 30, 2026.
+    forecast_url = "http://www.airnowapi.org/aq/forecast/current/"
     forecast_params = {
         "format": "application/json",
         "latitude": lat,
@@ -88,32 +92,36 @@ def fetch_air_quality(location_code, lat, lon):
         forecast_data = forecast_response.json()
         
         # Parse current data
+        # New /aq/observation/current/ziplatlong/ endpoint uses lowerCamelCase
+        # field names and "OZONE" instead of "O3" (old endpoint used ParameterName/AQI/O3).
         aqi_data = {}
         if current_data:
             # AirNow returns array of measurements
             for measurement in current_data:
-                param = measurement.get('ParameterName', '')
-                aqi = measurement.get('AQI', 0)
-                
-                if param == 'O3':
+                param = measurement.get('parameterName', '')
+                aqi = measurement.get('nowcastAQI', 0)
+
+                if param == 'OZONE':
                     aqi_data['o3'] = aqi
                 elif param == 'PM2.5':
                     aqi_data['pm25'] = aqi
                 elif param == 'PM10':
                     aqi_data['pm10'] = aqi
-            
+
             # Overall AQI is the highest value
             if aqi_data:
                 aqi_data['aqi'] = max(aqi_data.values())
-        
+
         # Parse forecast data
+        # New /aq/forecast/current/ endpoint uses dateValid/aqi/categoryName
+        # (old endpoint used DateForecast/AQI/Category.Name).
         forecast_aqi = []
         if forecast_data:
             for forecast in forecast_data:
                 forecast_aqi.append({
-                    'date': forecast.get('DateForecast', ''),
-                    'aqi': forecast.get('AQI', 0),
-                    'category': forecast.get('Category', {}).get('Name', '')
+                    'date': forecast.get('dateValid', ''),
+                    'aqi': forecast.get('aqi', 0),
+                    'category': forecast.get('categoryName', '')
                 })
         
         return {
