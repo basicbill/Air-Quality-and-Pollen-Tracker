@@ -1,0 +1,8 @@
+{
+  "issued_date": "2026-10-10",
+  "forecast_date": "2026-10-12",
+  "lead_days": 2,
+  "location": "KBOS",
+  "aqi": 40,
+  "category": "Good"
+}
