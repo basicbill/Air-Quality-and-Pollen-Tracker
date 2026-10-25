@@ -91,38 +91,51 @@ def fetch_air_quality(location_code, lat, lon):
         forecast_response.raise_for_status()
         forecast_data = forecast_response.json()
         
+        # AirNow's normal payload is a list of reading dicts. An error comes
+        # back as a dict (for example {"WebServiceError": [...]}). Iterating a
+        # dict yields its keys, which are strings, and then .get() crashes.
+        def readings_from(payload, label):
+            if isinstance(payload, list):
+                rows = []
+                for item in payload:
+                    if isinstance(item, dict):
+                        rows.append(item)
+                    else:
+                        print(f"⚠️  {location_code} {label}: skipped a {type(item).__name__} item: {item}")
+                return rows
+            if payload:
+                print(f"⚠️  {location_code} {label}: expected a list of readings, got {type(payload).__name__}: {payload}")
+            return []
+
         # Parse current data
         # New /aq/observation/current/ziplatlong/ endpoint uses lowerCamelCase
         # field names and "OZONE" instead of "O3" (old endpoint used ParameterName/AQI/O3).
         aqi_data = {}
-        if current_data:
-            # AirNow returns array of measurements
-            for measurement in current_data:
-                param = measurement.get('parameterName', '')
-                aqi = measurement.get('nowcastAQI', 0)
+        for measurement in readings_from(current_data, "current"):
+            param = measurement.get('parameterName', '')
+            aqi = measurement.get('nowcastAQI', 0)
 
-                if param == 'OZONE':
-                    aqi_data['o3'] = aqi
-                elif param == 'PM2.5':
-                    aqi_data['pm25'] = aqi
-                elif param == 'PM10':
-                    aqi_data['pm10'] = aqi
+            if param == 'OZONE':
+                aqi_data['o3'] = aqi
+            elif param == 'PM2.5':
+                aqi_data['pm25'] = aqi
+            elif param == 'PM10':
+                aqi_data['pm10'] = aqi
 
-            # Overall AQI is the highest value
-            if aqi_data:
-                aqi_data['aqi'] = max(aqi_data.values())
+        # Overall AQI is the highest value
+        if aqi_data:
+            aqi_data['aqi'] = max(aqi_data.values())
 
         # Parse forecast data
         # New /aq/forecast/current/ endpoint uses dateValid/aqi/categoryName
         # (old endpoint used DateForecast/AQI/Category.Name).
         forecast_aqi = []
-        if forecast_data:
-            for forecast in forecast_data:
-                forecast_aqi.append({
-                    'date': forecast.get('dateValid', ''),
-                    'aqi': forecast.get('aqi', 0),
-                    'category': forecast.get('categoryName', '')
-                })
+        for forecast in readings_from(forecast_data, "forecast"):
+            forecast_aqi.append({
+                'date': forecast.get('dateValid', ''),
+                'aqi': forecast.get('aqi', 0),
+                'category': forecast.get('categoryName', '')
+            })
         
         return {
             'current': aqi_data,
