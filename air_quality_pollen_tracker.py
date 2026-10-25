@@ -162,13 +162,15 @@ def fetch_pollen(location_code, lat, lon):
         if not daily_info:
             return None
 
-        # Helper to extract pollen index for a plant type
+        # Helper to extract pollen index for a pollen type (TREE / GRASS / WEED).
+        # Those codes live in pollenTypeInfo. plantInfo is species (OAK, RAGWEED).
         def get_pollen_index(day_data, plant_type):
-            """Extract Universal Pollen Index (UPI) for a plant type"""
-            plant_info = day_data.get('plantInfo', [])
-            for plant in plant_info:
-                if plant.get('code') == plant_type:
-                    index_info = plant.get('indexInfo', {})
+            """Extract Universal Pollen Index (UPI) for a pollen type"""
+            type_info = day_data.get('pollenTypeInfo', [])
+            for pollen_type in type_info:
+                if pollen_type.get('code') == plant_type:
+                    # indexInfo is omitted when that type is out of season
+                    index_info = pollen_type.get('indexInfo') or {}
                     return index_info.get('value', 0)
             return 0
 

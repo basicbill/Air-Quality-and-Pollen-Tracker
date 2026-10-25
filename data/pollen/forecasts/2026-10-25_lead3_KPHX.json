@@ -4,7 +4,7 @@
   "lead_days": 3,
   "location": "KPHX",
   "tree": 0,
-  "grass": 0,
-  "weed": 0,
-  "overall": 0
+  "grass": 2,
+  "weed": 4,
+  "overall": 4
 }

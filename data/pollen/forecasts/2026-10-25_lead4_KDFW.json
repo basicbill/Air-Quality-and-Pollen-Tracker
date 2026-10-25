@@ -3,8 +3,8 @@
   "forecast_date": "2026-10-29",
   "lead_days": 4,
   "location": "KDFW",
-  "tree": 0,
-  "grass": 0,
-  "weed": 0,
-  "overall": 0
+  "tree": 1,
+  "grass": 1,
+  "weed": 3,
+  "overall": 3
 }

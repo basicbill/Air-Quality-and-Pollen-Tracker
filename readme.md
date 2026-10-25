@@ -96,6 +96,8 @@ Create these empty folders in your repo (GitHub needs at least a placeholder fil
    - Name: `AIRNOW_API_KEY`, Value: [your AirNow key]
    - Name: `GOOGLE_MAPS_API_KEY`, Value: [your Google API key]
 
+Both secrets are already saved for this repo. GitHub will not show a secret again after you save it. Do not paste either key into the Python file or the data files. The daily job reads them on its own.
+
 ### 6. Enable GitHub Actions Permissions
 
 1. Go to repo **Settings** → **Actions** → **General**
@@ -139,14 +141,15 @@ Don't wait for the scheduled run - test immediately:
 - **After 30 days**: Meaningful patterns start emerging
 - **After 90 days**: Seasonal trends become clear
 
-### Pollen Seasonality
+### Pollen readings
 
-**Important**: Pollen values will show `0` or "Low" during off-season months:
-- **Tree Pollen**: Spring (March-May)
-- **Grass Pollen**: Late Spring/Summer (May-July)  
-- **Weed Pollen**: Late Summer/Fall (August-October)
+Google's index runs from 0 to 5 for tree, grass, and weed. A 0 can be a real quiet day. Tree pollen is mostly spring (March-May), grass is late spring and summer (May-July), and weed is late summer into fall (August-October). Southern cities can still show grass and weed in late October.
 
-During winter and late fall, low/zero pollen readings are expected and normal. Real data will appear when pollen season begins in spring!
+**Saved pollen before 2026-10-25 is not usable.** Every tree, grass, and weed number in those files is 0, including days in spring and summer when pollen was in the air. The collector was reading `plantInfo` (species such as oak and ragweed) instead of `pollenTypeInfo`, which is where Google puts the TREE, GRASS, and WEED indexes. Google only returns about 5 days of forecast and does not keep older days, so that history cannot be filled back in.
+
+Pollen rows in `results.json` from before that date are not a real accuracy score. The forecast and the saved "actual" were both 0, so the comparison came out perfect. Air quality history was not affected.
+
+From 2026-10-25 on, the daily pollen file stores the real index. A 0 after that date means Google reported none, not a missing reading.
 
 ### Accuracy Metrics
 

@@ -12,10 +12,10 @@
     "overall": 0
   },
   "KDFW": {
-    "tree": 0,
-    "grass": 0,
-    "weed": 0,
-    "overall": 0
+    "tree": 2,
+    "grass": 1,
+    "weed": 3,
+    "overall": 3
   },
   "KDEN": {
     "tree": 0,
@@ -31,9 +31,9 @@
   },
   "KMIA": {
     "tree": 0,
-    "grass": 0,
-    "weed": 0,
-    "overall": 0
+    "grass": 1,
+    "weed": 2,
+    "overall": 2
   },
   "KOMA": {
     "tree": 0,
@@ -55,14 +55,14 @@
   },
   "KPHX": {
     "tree": 0,
-    "grass": 0,
-    "weed": 0,
-    "overall": 0
+    "grass": 2,
+    "weed": 4,
+    "overall": 4
   },
   "KTUS": {
     "tree": 0,
-    "grass": 0,
-    "weed": 0,
-    "overall": 0
+    "grass": 1,
+    "weed": 4,
+    "overall": 4
   }
 }

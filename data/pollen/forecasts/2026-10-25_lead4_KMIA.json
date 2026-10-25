@@ -4,7 +4,7 @@
   "lead_days": 4,
   "location": "KMIA",
   "tree": 0,
-  "grass": 0,
-  "weed": 0,
-  "overall": 0
+  "grass": 1,
+  "weed": 3,
+  "overall": 3
 }
