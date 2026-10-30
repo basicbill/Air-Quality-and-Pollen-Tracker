@@ -1,0 +1,68 @@
+{
+  "KBIS": {
+    "tree": 0,
+    "grass": 0,
+    "weed": 0,
+    "overall": 0
+  },
+  "KBOS": {
+    "tree": 0,
+    "grass": 0,
+    "weed": 0,
+    "overall": 0
+  },
+  "KDFW": {
+    "tree": 1,
+    "grass": 0,
+    "weed": 2,
+    "overall": 2
+  },
+  "KDEN": {
+    "tree": 0,
+    "grass": 0,
+    "weed": 0,
+    "overall": 0
+  },
+  "KLAX": {
+    "tree": 0,
+    "grass": 0,
+    "weed": 0,
+    "overall": 0
+  },
+  "KMIA": {
+    "tree": 0,
+    "grass": 1,
+    "weed": 3,
+    "overall": 3
+  },
+  "KOMA": {
+    "tree": 0,
+    "grass": 0,
+    "weed": 0,
+    "overall": 0
+  },
+  "KORD": {
+    "tree": 0,
+    "grass": 0,
+    "weed": 0,
+    "overall": 0
+  },
+  "KPDX": {
+    "tree": 0,
+    "grass": 0,
+    "weed": 0,
+    "overall": 0
+  },
+  "KPHX": {
+    "tree": 0,
+    "grass": 1,
+    "weed": 3,
+    "overall": 3
+  },
+  "KTUS": {
+    "tree": 0,
+    "grass": 1,
+    "weed": 3,
+    "overall": 3
+  }
+}
